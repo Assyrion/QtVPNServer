@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>ClientList.qml</file>
+        <file>ClientDelegate.qml</file>
+    </qresource>
+</RCC>
