@@ -16,6 +16,9 @@ public:
 
     ClientListModel* clientListModel() { return &m_clientListModel; }
 
+    Q_INVOKABLE void startVPNServer();
+    Q_INVOKABLE void stopVPNServer();
+
 private:
     QTelnet m_telnetSocket;
     TelnetParser m_telnetParser;

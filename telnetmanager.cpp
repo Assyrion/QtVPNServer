@@ -1,6 +1,7 @@
 #include "telnetmanager.h"
 #include <QHostAddress>
 #include <QMetaType>
+#include <QProcess>
 
 TelnetManager::TelnetManager(QObject *parent)
     : QObject(parent),
@@ -31,6 +32,22 @@ TelnetManager::TelnetManager(QObject *parent)
 TelnetManager::~TelnetManager()
 {
     m_telnetSocket.disconnectFromHost();
+}
+
+void TelnetManager::startVPNServer()
+{
+    QProcess p;
+    p.start("systemctl start openvpn@server");
+    p.waitForFinished();
+
+    m_telnetSocket.connectToHost("127.0.0.1", 7505);
+}
+
+void TelnetManager::stopVPNServer()
+{
+    QProcess p;
+    p.start("systemctl stop openvpn@server");
+    p.waitForFinished();
 }
 
 void TelnetManager::onStateChanged(QAbstractSocket::SocketState s)

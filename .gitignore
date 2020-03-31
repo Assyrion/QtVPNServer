@@ -24,3 +24,5 @@ qmlcache_loader.cpp
 qrc_qml.cpp
 
 moc_telnetparser.cpp
+
+QtVpnServer/.qmake.stash
